@@ -61,10 +61,11 @@ Page({
           next_start: nextStart,
           loading: false
         });
-        console.log(that.data.tripNotes);
+        console.log(that.data.tripNotes[0].data[0]);
       },
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -83,7 +84,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

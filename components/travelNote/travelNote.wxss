@@ -1,0 +1,24 @@
+
+.travel{
+  width: 750rpx;
+  padding-top: 25rpx;
+  border-radius: 10rpx;
+  position: relative;
+}
+.travel::before{
+  content: '';
+  position: absolute;
+  width: 725rpx;
+  height: 400rpx;
+  background: linear-gradient(to right,rgba(0,0,0,.6) 0,rgba(0,0,0,0) 100%);
+}
+.travel-image{
+  width: 700rpx;
+  border-radius: 10rpx;
+  height: 400rpx;
+}
+.travel-info{
+  position: absolute;
+  top:50rpx;
+  color: white;
+}

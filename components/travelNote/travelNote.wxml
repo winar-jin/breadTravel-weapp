@@ -1,5 +1,16 @@
+<!--
+tripNote
 
+ -->
 <template name="travel-note">
-    
-    
+  <view class="travel" bindtap="travelNoteTap" data-id="{{tripNote.id}}" data-name="{{tripNote.name}}">
+    <image class="travel-image" mode="aspectFill" src="{{tripNote.cover_image_w640}}" />
+    <view class="travel-info">
+      <text class="h2">{{tripNote.name}}</text>
+      <view class="describe">
+        <view><text>{{tripNote.date_added}}</text><text>{{ tripNote.day_count }}天</text><text>{{ tripNote.view_count }}次浏览</text></view>
+        <view class="country">{{ tripNote.popular_place_str }}</view>
+      </view>
+    </view>
+  </view>
 </template>
