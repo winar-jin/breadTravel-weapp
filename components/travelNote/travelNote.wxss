@@ -1,6 +1,7 @@
 
 .travel{
-  width: 750rpx;
+  width: 700rpx;
+  margin-left: 25rpx; 
   padding-top: 25rpx;
   border-radius: 10rpx;
   position: relative;
@@ -10,6 +11,7 @@
   position: absolute;
   width: 725rpx;
   height: 400rpx;
+  border-radius: 10rpx;
   background: linear-gradient(to right,rgba(0,0,0,.6) 0,rgba(0,0,0,0) 100%);
 }
 .travel-image{
@@ -19,6 +21,46 @@
 }
 .travel-info{
   position: absolute;
-  top:50rpx;
+  top: 70rpx;
+  left: 25rpx;
   color: white;
+}
+.travel-info .h2{
+  font-size: 1em;
+  width: 675rpx;
+  display: block;
+}
+.travel-info .describe{
+  border-left: 2px solid lightskyblue;
+  font-size: .5em;
+  margin-top: 50rpx;
+  margin-left: 35rpx;
+  padding-left: 20rpx;
+}
+.describe view{
+  margin-bottom: 15rpx;
+}
+.describe view text{
+  margin-right: 20rpx;
+}
+
+.travel .user{
+  position: absolute;
+  bottom: 40rpx;
+  color: white;
+  left: 50rpx;
+  width: 450rpx;
+}
+.travel .user image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.travel .user view.name{
+  display: inline-block;
+  font-size: 0.5em;
+  position: absolute;
+  top: 50%;
+  transform: translate3D(0,-50%,0);
+  margin-left: 25rpx;
 }

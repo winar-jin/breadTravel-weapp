@@ -3,20 +3,16 @@
 
 .travelNotes{
     display: flex;
-    padding-left: 25rpx;
-    padding-right: 25rpx;
     justify-content: center;
     align-items: center;
     background:rgba(222,222,222,0.2);
 }
 .loading{
-    width: 700rpx;
+    width: 750rpx;
     text-align: center;
     line-height: 1.5em;
-    background: lightskyblue;
-    border-radius: 10rpx;
     height: 1.5em;
-    color: white;
+    color: gray;
     vertical-align: center;
     padding-top: 5rpx;
 }

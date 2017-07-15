@@ -8,9 +8,17 @@ tripNote
     <view class="travel-info">
       <text class="h2">{{tripNote.name}}</text>
       <view class="describe">
-        <view><text>{{tripNote.date_added}}</text><text>{{ tripNote.day_count }}天</text><text>{{ tripNote.view_count }}次浏览</text></view>
+        <view>
+          <text>{{tripNote.date_added}}</text>
+          <text>{{ tripNote.day_count }}天</text>
+          <text>{{ tripNote.view_count }}次浏览</text>
+        </view>
         <view class="country">{{ tripNote.popular_place_str }}</view>
       </view>
+    </view>
+    <view class="user" wx:if="{{ mode === 1 }}">
+      <image class="avatar" src="{{ tripNote.user.avatar_l }}"></image>
+      <view class="name">by {{ tripNote.user.name }}</view>
     </view>
   </view>
 </template>
