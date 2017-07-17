@@ -1,1 +1,4 @@
-{}
+{
+    "navigationBarTitleText": "Bread Travel",
+    "enablePullDownRefresh": true
+}

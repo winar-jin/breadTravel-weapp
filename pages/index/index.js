@@ -28,7 +28,7 @@ Page({
   /**
    * 加载游记
    */
-  loadMore(needRefresh) {
+  loadMore(e,needRefresh) {
     const that = this;
     const loading = this.data.loading;
     if (loading) {
@@ -72,12 +72,16 @@ Page({
   onLoad: function (options) {
     this.loadMore();
   },
-
+  scroll: function(e){
+    console.log('i ma scroll');
+    console.log(e);
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.loadMore(true);
+    console.log('Hello refresh');
+    this.loadMore(null,true);
   },
 
   /**
