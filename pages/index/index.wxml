@@ -1,12 +1,12 @@
 <!--index.wxml-->
-<import src="../../components/travelNote/travelNote.wxml" />
+<import src="../../components/travelNote/travelNote" />
 
 <scroll-view class="travelNotes"
-  style="width:{{windowWidth}}px;" scroll-y="true" bindscrolltolower="loadMore" lower-threshold="800">
+  style="width:{{windowWidth}}px;height:{{windowHeight}}px" scroll-y="true" bindscrolltolower="loadMore" lower-threshold="800" enable-back-to-top="true">
   <block wx:for="{{tripNotes}}" wx:for-item="tripNote" wx:key="tripNote.data[0].id">
     <template is="travel-note" wx:if="{{tripNote.type === 4}}" data="{{tripNote: tripNote.data[0],mode: 1}}" />
   </block>
-  <view class="loading">
+  <view class="loading" bindtap="loadMore">
     loading...
   </view>
 </scroll-view>

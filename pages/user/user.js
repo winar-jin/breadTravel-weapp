@@ -1,6 +1,8 @@
-// trip.js
+// user.js
 const Api = require('../../utils/api');
 const App = getApp();
+const Utils = require('../../utils/util');
+const formatTime = Utils.formatTime;
 
 Page({
 
@@ -8,39 +10,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    trip: {},
-    options: null,
-    windowWidth: 0
+    trips: [],
+    user_info: null,
+    userId: null,
+    windowWidth: App.globalData.windowWidth,
+    windowHeight: App.globalData.windowHeight,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    
     const that = this;
-    const id = options.id;
-    that.setData({
-      options,
-      windowWidth: App.globalData.windowWidth,
-    });
-    wx.showToast({
-      title: '正在加载中...',
-      icon: 'loading',
-      duration: 10000
-    });
-
-    Api.getTripInfoByID({
+    const userId = options.id || that.data.userId;
+    Api.getUserInfoByID({
       query: {
-        tripId: id,
+        userId,
       },
       success: (res) => {
-        const trip = res.data;
-        that.setData({
-          trip,
-        });
         
-        wx.hideToast();
-      }
+        const trips = res.data.trips;
+        trips.map((trip) => {
+          const item = trip;
+          item.date_added = formatTime(new Date(item.date_added * 1000), 1);
+          return item;
+        });
+        that.setData({
+          trips,
+          userId: res.data.userId,
+          user_info: res.data.user_info,
+        });
+        wx.setNavigationBarTitle({
+          title: res.data.user_info.name,
+        });
+      },
+    });
+  },
+
+  viewTrip(e) {
+    const dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `../trip/trip?id=${dataset.id}&name=${dataset.name}`,
     });
   },
 
@@ -48,25 +60,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    const that = this;
-    wx.setNavigationBarTitle({
-      title: that.data.options.name,
-    });
-  },
 
-  viewWaypoint: function (e) {
-    const that = this;
-    const dataset = e.currentTarget.dataset;
-    wx.navigateTo({
-      url: `../waypoint/waypoint?waypointId=${dataset.waypoint}&tripId=${that.data.trip.id}`,
-    });
-  },
-
-  gotoUser(e) {
-    const userId = e.target.dataset.id;
-    wx.navigateTo({
-      url: `../user/user?id=${userId}`,
-    });
   },
 
   /**

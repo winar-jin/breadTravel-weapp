@@ -18,7 +18,7 @@ Page({
   /**
    * 点击游记
    */
-  travelNoteTap(e){
+  travelNoteTap(e) {
     let dataSet = e.currentTarget.dataset;
     wx.navigateTo({
       url: `../trip/trip?id=${dataSet.id}&name=${dataSet.name}`,
@@ -28,7 +28,7 @@ Page({
   /**
    * 加载游记
    */
-  loadMore(e,needRefresh) {
+  loadMore(e, needRefresh) {
     const that = this;
     const loading = this.data.loading;
     if (loading) {
@@ -56,12 +56,13 @@ Page({
         that.setData({
           tripNotes: newTripNotes,
         });
+        
         const nextStart = res.data.data.next_start;
         that.setData({
-          next_start: nextStart,
+          start: nextStart,
           loading: false
         });
-        console.log(that.data.tripNotes[0].data[0]);
+        
       },
     })
   },
@@ -72,23 +73,22 @@ Page({
   onLoad: function (options) {
     this.loadMore();
   },
-  scroll: function(e){
-    console.log('i ma scroll');
-    console.log(e);
+  scroll: function (e) {
+    
+    
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('Hello refresh');
-    this.loadMore(null,true);
+    
+    this.loadMore(null, true);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示

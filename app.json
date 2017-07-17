@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/trip/trip"
+    "pages/trip/trip",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -3,7 +3,7 @@ tripNote
 
  -->
 <template name="travel-note">
-  <view class="travel" bindtap="travelNoteTap" data-id="{{tripNote.id}}" data-name="{{tripNote.name}}">
+  <view class="travel" bindtap="travelNoteTap" data-id="{{tripNote.id}}" data-name="{{tripNote.name}}" wx:if="{{ mode === 1 || mode === 2 }}">
     <image class="travel-image" mode="aspectFill" src="{{tripNote.cover_image_w640}}" />
     <view class="travel-info">
       <text class="h2">{{tripNote.name}}</text>
@@ -11,14 +11,24 @@ tripNote
         <view>
           <text>{{tripNote.date_added}}</text>
           <text>{{ tripNote.day_count }}天</text>
-          <text>{{ tripNote.view_count }}次浏览</text>
+          <text wx:if="{{ mode === 1 }}">{{ tripNote.view_count }}次浏览</text>
         </view>
-        <view class="country">{{ tripNote.popular_place_str }}</view>
+        <view class="country" wx:if="{{ mode === 1 }}">{{ tripNote.popular_place_str }}</view>
       </view>
     </view>
     <view class="user" wx:if="{{ mode === 1 }}">
       <image class="avatar" src="{{ tripNote.user.avatar_l }}"></image>
       <view class="name">by {{ tripNote.user.name }}</view>
     </view>
+    <view class="bottom" wx:if="{{ mode === 2 }}">{{ tripNote.view_count }}次浏览 / {{ tripNote.liked_count }}喜欢 / {{ tripNote.total_comments_count }}评论</view>
+  </view>
+  <view class="m-trip-s" bindtap="viewTrip" data-id="{{ tripNote.id }}" data-name="{{ tripNote.name }}"  wx:if="{{ mode === 3 }}">
+    <view class="mask"></view>
+    <image class="cover" src="{{ tripNote.cover_image_w640 }}" mode="aspectFill"></image>
+    <view class="info">
+      <view class="title">{{ tripNote.name }}</view>
+      <view class="detail"><view><text>{{ tripNote.date_added }}</text></view><view><text>{{ tripNote.day_count }}天</text></view></view>
+    </view>
+    <view class="stat"><view><text>{{ tripNote.waypoints }}</text>足迹</view><view><text>{{ tripNote.recommendations }}</text>收藏</view></view>
   </view>
 </template>
