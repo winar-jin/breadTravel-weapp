@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/trip/trip",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/waypoint/waypoint"
   ],
   "window": {
     "backgroundTextStyle": "light",
