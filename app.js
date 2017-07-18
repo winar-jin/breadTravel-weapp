@@ -2,6 +2,9 @@
 App({
   onLaunch: function () {
     var that = this;
+    this.getUserInfo(function(cb){
+      console.log(`${cb.nickName} have loged in!`);
+    });
     wx.getSystemInfo({
       success: function(res) {
         that.globalData.windowWidth = res.windowWidth;

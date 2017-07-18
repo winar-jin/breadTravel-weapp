@@ -3,12 +3,34 @@
     "pages/index/index",
     "pages/trip/trip",
     "pages/user/user",
-    "pages/waypoint/waypoint"
+    "pages/waypoint/waypoint",
+    "pages/explore/explore"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "skyblue",
     "navigationBarTitleText": "Bread Travel",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "tabBar": {
+    "color": "#b0b0b0",
+    "selectedColor": "#4abdcc",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index_normal.png",
+        "selectedIconPath": "images/index_pressed.png",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "pages/explore/explore",
+        "iconPath": "images/explore_normal.png",
+        "selectedIconPath": "images/explore_pressed.png",
+        "text": "发现"
+      }
+    ]
+  },
+  "degug": true
 }
