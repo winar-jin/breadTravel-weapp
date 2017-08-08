@@ -4,7 +4,9 @@
     "pages/trip/trip",
     "pages/user/user",
     "pages/waypoint/waypoint",
-    "pages/explore/explore"
+    "pages/explore/explore",
+    "pages/destination/destination",
+    "pages/poi_list/poi_list"
   ],
   "window": {
     "backgroundTextStyle": "light",

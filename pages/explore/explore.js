@@ -1,66 +1,35 @@
-// explore.js
+const api = require('../../utils/api');
+const Utils = require('../../utils/util');
+
+const App = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    elements: [],
+    windowWidth: App.globalData.windowWidth,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onReady() {
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  onLoad() {
+    const self = this;
+    wx.showToast({
+      title: '正在加载',
+      icon: 'loading',
+      duration: 10000,
+    });
+    api.getExplorePlaceList({
+      success: (res) => {
+        const dest = res.data;
+        self.setData({
+          elements: dest.elements,
+        });
+        wx.hideToast();
+      },
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  viewPOI(e) {
+    const data = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `../destination/destination?type=${data.type}&id=${data.id}&name=${data.name}`,
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
-})
+});
